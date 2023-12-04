@@ -1,0 +1,50 @@
+{% extends 'base-back.html.twig' %}
+{% block body %}
+    <section class="content">
+        <!-- general form elements disabled -->
+            <div class="card card-warning" style="margin: 30 px">
+              <div class="card-header">
+                <h3 class="card-title">Add Teams</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                {# <form> #}
+                {{form_start(form,{'attr':{'novalidate':'novalidate'}})}}
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        {{ form_label(form.TeamName,"Name") }}
+                        {{ form_errors(form.TeamName) }}
+                        {{ form_widget(form.TeamName,{'attr':{'class':'form-control','placeholder':'Enter ...'}}) }}
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="custom-file">
+                        {{ form_label(form.Picture,"Picture") }}<br>
+                        {{ form_errors(form.Picture) }}
+                        {{ form_widget(form.Picture) }}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- textarea -->
+                      <div class="form-group">
+                        {# <label>Description</label>
+                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea> #}
+                        {{ form_label(form.Description,"Description") }}
+                        {{ form_errors(form.Description) }}
+                        {{ form_widget(form.Description,{'attr':{'class':'form-control','placeholder':'Enter ...','rows':'3'}}) }}
+                      </div>
+                    </div>
+                    <div style="margin-top: 80px; margin-left: 390px;">
+                        <div class="col-sm-6">
+                                
+                            </div>
+                        <div>
+                    </div>
+                  </div>
+                 {{ form_end(form) }}
+              </div>
+             </div>
+    </section>
+{% endblock %}

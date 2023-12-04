@@ -1,0 +1,77 @@
+ <div class="content-wrapper">
+
+{% block title %} Gestion Des Evenements {% endblock %}
+
+{% block body %}
+<style type="text/css">
+        {
+            font-family: Candara, Arial, sans-serif;
+        }
+         h1{
+            font-family: Candara, Arial, sans-serif;
+            color:blue;
+            position: initial;
+       
+        tfoot tr td{
+            font-weight: bold;
+            font-size: x-small;
+        }
+        .gray {
+            background-color: lightgreen;
+        }
+    </style>
+    <style>
+        table, td, th {
+            border: 2px solid;
+            background-color: #d1b771; 
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+             border-spacing: 10px;
+
+            font-size: 10px;
+        }
+    </style>
+<section id="user" class="user">
+    <br>
+    <br>
+    <br>
+    <div class="content-wrapper">
+    <h1>LISTE DES EVENEMENTS </h1>
+   
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th>NomEvenement</th>
+                <th>Description</th>
+                <th>lieu</th>
+                <th>picture</th>
+             
+                <th>Date</th>
+              
+            </tr>
+        </thead>
+        <tbody>
+        {% for evenement in event %}
+            <tr>
+                
+                <td>{{ evenement.Name }}</td>
+                <td>{{ evenement.description }}</td>
+                <td>{{ evenement.lieu }}</td>
+              <td> <img src="{{ 'Uploads/image/' ~evenement.picture }}" style="width: 80px" style="height:60px"></td> 
+                <td>{{ evenement.date ? evenement.date|date('Y-m-d') : '' }}</td>
+               
+              
+            </tr>
+       
+            
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+</section><!-- End Contact Section -->
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base-back.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+        <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body"><br><br><br><br>
+                        <h4 class="card-title"><a href="{{ path('list_posts') }}"><i class="mdi mdi-arrow-left"></i></a>Mettre à jour d'un post</h4><br>
+                            <div class="form-group">
+                                        {{form_start(form,{'attr':{'novalidate':'novalidate'}})}}
+
+                                {{ form_widget(form) }}
+                                {{ form_end(form) }}
+                                <button class="text-danger" style="font-size: 14px;background:none; border:none;margin:0;padding:0;cursor: pointer;text-decoration: underline red;" class="btn" type="submit"><i class="mdi mdi-delete"></i></button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

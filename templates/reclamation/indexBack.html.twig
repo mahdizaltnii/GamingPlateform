@@ -1,0 +1,79 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Reclamation index{% endblock %}
+
+{% block body %}
+<center>
+    <section id="main-content">
+        <section class="wrapper site-min-height">
+            <div class="row">
+                <div class="col-lg-12">
+       <div class="pcoded-search-box" style="position: relative; ">
+        <input  type="text" id="searchEnt" class="form-control" placeholder="Search">
+    
+
+
+    </div> 
+    <button onclick="myFunction()">Click me</button>
+    <p id="demo"></p>
+
+<script>
+function myFunction() {
+    let searchString = document.getElementById('searchEnt').value; // recuperation de l'input de la recherche
+        window.location = ('http://localhost:8000/reclamation/order1/'+searchString
+);
+}
+</script>
+  
+
+
+
+
+        <br>      <br>      <br>      <br>      <br>
+
+<a class="btn btn-success" href="{{path('decroissant') }}">Trier en ordre décroissant</a>
+<a class="btn btn-success"href="{{path('croissant') }}">Trier en ordre croissant</a>
+                
+                
+                    {% for reclamation in reclamations %}
+                   <tr>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="custom-box">
+                            <div class="servicetitle">
+                                <h4>Nom user</h4>
+                                <hr>
+                            </div>
+                            <h5>{{ reclamation.id }}</h5>
+                            <h5>{{ reclamation.sujet }}</h5>
+                            <p>{{ reclamation.description }}</p>
+                            <ul class="pricing">
+                                <li>{{ reclamation.date ? reclamation.date|date('Y-m-d H:i:s') : '' }}</li>
+                                <li>  {% if reclamation.reponse is not null %} {{ reclamation.reponse.reponse }} {% else %} <h4> pas de reponse </h4>  {% endif %}  </li>
+                                <li>  </li>
+
+                            </ul>
+                            <a class="btn btn-theme" href="{{ path('reclamation_show_back', {'id': reclamation.id}) }}">show</a>
+                            {% if reclamation.reponse is not null %}   {% else %} <a class="btn btn-theme" href="{{ path('reponse_new2', {'id': reclamation.id}) }}">repondre  </a>  {% endif %}
+
+                        </div>
+                        <!-- end custombox -->
+                    </div>
+                    </tr>
+                    {% endfor %}
+                </div>
+                <!--  /col-lg-12 -->
+            </div>
+            <!--  /row -->
+        </section>
+        <!-- /wrapper -->
+    </section>
+    
+</center>
+   
+
+
+
+
+
+{% endblock %}
+

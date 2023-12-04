@@ -1,0 +1,64 @@
+{% extends 'base-front.html.twig' %}
+{% block body %}
+    <div
+      class="breadcumb-wrapper breadcumb-layout1 pt-200 pb-50"
+      data-bg-src="Front/img/breadcumb/breadcumb-1.jpg"
+      data-overlay>
+      <div class="container z-index-common">
+        <div class="breadcumb-content text-center">
+          <h1 class="breadcumb-title h1 text-white my-0">Teams</h1>
+          <h2 class="breadcumb-bg-title">Teams</h2>
+          <ul class="breadcumb-menu-style1 text-white mx-auto fs-xs">
+            <li>
+              <a href="index-2.html"><i class="fal fa-home"></i>Home</a>
+            </li>
+            <li class="active">Tournament</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <section class="vs-match-wrapper vs-match-layout1 newsletter-pb">
+    {% for team in teams %}
+      <div class="container">
+        <div class="mb-15 filter-active row">
+          <div class="col-md-6 col-lg-12 grid-item pubg fortnite csgo">
+            <div class="vs-match">
+              <div
+                class="row align-items-center justify-content-center justify-content-lg-start"
+              >
+                <div class="col-lg-3">
+                  <div class="match-logo">
+                    <a href="team-details.html">
+                    <img src="{{ asset('/Front/img/team/'~team.Picture) }}" alt="Team Logo"/>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-lg">
+                  <div class="match-about pl-35">
+                    <h3 class="team-name h5 text-white mb-1 mb-lg-2">
+                      <a href="team-details.html">{{ team.TeamName}}</a>
+                    </h3>
+                    <p class="match-date mb-0">{{ team.Description}}</p>
+                  </div>
+                </div>
+                <div class="col-auto col-xl-2 text-end">
+                  {# <a
+                    href="https://www.youtube-nocookie.com/embed/uoonAnmKQhI"
+                    class="icon-btn1 popup-video"
+                    ><i class="fab fa-twitch"></i
+                  ></a> #}
+                  {% if not app.user.team %}
+                    <a
+                    href="{{ path('JoinTeam',{'id':team.id}) }}"
+                    class="icon-btn1"
+                    ><i class="">join</i
+                  ></a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+    </section>
+{% endblock %}

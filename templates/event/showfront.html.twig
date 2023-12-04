@@ -1,0 +1,261 @@
+{% extends "base-front.html.twig" %}
+{% block body %}
+
+    <div
+            class="breadcumb-wrapper breadcumb-layout1 pt-200 pb-50"
+            data-bg-src="Front/img/breadcumb/breadcumb-1.jpg"
+            data-overlay
+    >
+        <div class="container z-index-common">
+            <div class="breadcumb-content text-center">
+                <h1 class="breadcumb-title h1 text-white my-0">Events</h1>
+                <h2 class="breadcumb-bg-title">Events</h2>
+                <ul class="breadcumb-menu-style1 text-white mx-auto fs-xs">
+                    <li>
+                        <a href="index-2.html"><i class="fal fa-home"></i>Home</a>
+                    </li>
+                    <li class="active">Tournament</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+   <a href="{{path('event_new')}}" class=""> <button class="button-28" role="button" style="color:black;appearance: none;
+  background-color: transparent;
+  border: 2px solid #1A1A1A;">add new Event</button></a>
+    <section class="vs-events-wrapper events-layout1 space-top space-md-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+            {% for event in events %}
+                
+                    <div
+                            class="vs-events d-lg-flex"
+                            data-bg-src="{{asset('Front/img/shape/events-bg-1.png')}}"
+                    >
+                        <div class="media-img">
+
+                          <img src="{{ asset('Uploads/image/' ~event.picture) }}" style="width: 100px" style="height:100px">
+
+                        </div>
+                        <div class="media-body align-self-center">
+                            <h3 class="events-name h5 text-dark">
+                                <a href="tournament-details.html">{{ event.Name }}</a>
+                            </h3>
+                            <ul class="events-list list-style-none">
+                                <li class="text-light2">
+                                <br>
+                                    <span class="text-dark">Date:</span>{{ event.date|date('Y-m-d') }}
+
+                                </li>
+                                <li class="text-light2">
+                                    <span class="text-dark">Lieu:</span>{{ event.lieu }}
+                                </li>
+                                <li class="text-light2">
+                                    <span class="text-dark">Description:</span>{{ event.description }}
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+               
+                {% endfor %}
+
+                </div>
+
+
+                </div>
+            
+        </div>
+    </section>
+
+
+
+
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/622774d1a34c2456412a0f0f/1ftl20l2o';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+
+
+
+
+<div style="margin :20px 0 0px 850px " class="text-light2">
+    {{knp_pagination_render(events) }}
+    </div>
+
+
+    
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

@@ -1,0 +1,36 @@
+{% extends 'base-back.html.twig' %}
+{% block body %}
+    <h1>List Annonces</h1>
+
+    <div class="col-md-3">
+        {% include 'Back-Annonces/_filtrerannonce.html.twig' with {form: form} only %}
+    </div>
+
+    <table border="1" class="table">
+       <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Email</th>
+        <th>Prix</th>
+        <th>Tel</th>
+        <th>Categorie</th>
+        <th>Delete</th>
+        <th>Update</th>
+       </tr>
+        <tr {% for a in annonce %}>
+            <td>{{ a.id }}</td>
+            <td>{{ a.title }}</td>
+            <td>{{ a.description }}</td>
+            <td><img src="{{ asset('/front/annonces/img/'~a.image)}}" alt="" style="width: 200px; height: 200px"></td>
+            <td>{{ a.email }}</td>
+            <td>{{ a.prix }}</td>
+            <td>{{ a.tel }}</td>
+            <td>{{ a.categorie.nom }}</td>
+            <td><a href="{{ path('delete_annonceB',{'id':a.id}) }}">Delete</a></td>
+            <td><a href="{{ path('editB_annonce',{'id':a.id}) }}">Update</a></td>
+        </tr {% endfor %}>
+    </table>
+    {{ knp_pagination_render(annonce) }}
+{% endblock %}

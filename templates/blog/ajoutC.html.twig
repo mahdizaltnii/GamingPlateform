@@ -1,0 +1,16 @@
+{% extends 'base-front.html.twig' %}
+{% block body %}
+    <section class="vs-match-wrapper vs-match-layout1 newsletter-pb" style="padding-bottom: 280px; position: relative;top: 50px;">
+    <div class="container" style="position:relative; max-height:100%;top: 200px;">
+       
+        {% form_theme commentform 'bootstrap_4_layout.html.twig' %}
+        {{ form_start(commentform,{'attr':{'novalidate':'novalidate'}}) }}
+
+        {{ form_widget(commentform) }}
+
+        {{ form_end(commentform) }}
+    </div>
+    </section>
+
+    
+{% endblock %}

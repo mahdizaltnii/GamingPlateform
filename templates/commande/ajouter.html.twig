@@ -1,0 +1,120 @@
+{% extends 'base-front.html.twig' %}
+
+{% block body %}
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+<!-- Li's Breadcrumb Area End Here -->
+<!--Shopping Cart Area Strat-->
+
+<div
+      class="breadcumb-wrapper breadcumb-layout1 pt-200 pb-50"
+      data-bg-src="Front/img/breadcumb/breadcumb-1.jpg"
+      data-overlay
+    >
+      <div class="container z-index-common">
+        <div class="breadcumb-content text-center">
+          <h1 class="breadcumb-title h1 text-white my-0">Commande</h1>
+          <h2 class="breadcumb-bg-title">Checkout</h2>
+          <ul class="breadcumb-menu-style1 text-white mx-auto fs-xs">
+            <li>
+              <a href="index-2.html"><i class="fal fa-home"></i>Home</a>
+            </li>
+            <li class="active">Shop</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+     
+<!--Checkout Area Strat-->
+   <div class="checkout-area pt-60 pb-30">
+    <div class="container">
+        <div class="row">
+           
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-12">
+              
+                    <div class="checkbox-form">
+                        {{ form_start(formA ) }}
+
+
+                        <h3>Billing Details</h3>
+                        <div class="row">
+                           
+                         
+                          
+                            </div>
+                            
+                            <div class="col-md-6 form-group">
+                                <div class="checkout-form-list">
+                                    <label>Montant <span class="required">*</span></label>
+                                    {{ form_widget(formA.montant, {attr: { value : total ,readonly:true }}) }} 
+                                    {{ form_errors(formA.montant, {attr: { value : total ,readonly:true }}) }} 
+
+                                </div>
+                            </div>
+                           
+                           
+                          
+                          
+                            {{ form_end(formA) }}
+                            
+                            
+                           
+                        </div>  
+                    </div>
+               
+            </div>
+            <div class="">
+                <div class="your-order">
+                    <h3>Your order</h3>
+                    <div class="your-order-table table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="cart-product-name">Product</th>
+                                    <th class="cart-product-total">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for element in elements %}
+                                <tr class="cart_item">
+                                  <td class="cart-product-name"> <strong class="product-quantity">{{ element.produit.Nom }} </strong></td>
+                                  <td class="cart-product-total"><span class="amount">{{ element.quantite * element.produit.prixProd }}DT</span></td>  
+                                </tr>
+                               
+                                {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                
+                                <tr class="order-total">
+                                    <th> Total</th>
+                                    <td><strong>{{total}}DT<span class="amount"></span></strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                  
+                            
+                           
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Checkout Area End-->
+
+ 
+{% endblock %}

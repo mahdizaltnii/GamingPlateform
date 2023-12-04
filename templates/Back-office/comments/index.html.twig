@@ -1,0 +1,138 @@
+{# {% extends 'base-back.html.twig' %}
+{% block body %}
+
+    <div class="main-panel">
+          <div class="content-wrapper"> 
+            <div class="row " style="
+    position: relative;
+    right: 10%;
+    /* margin-right: 72px; */
+">
+              <div class="col-12 grid-margin">
+                 <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Liste des comments</h4><br>
+                    <a class="text-warning" href="{{ path('ajout_comments') }}">
+                        <i class="mdi mdi-database-plus"></i> Nouveau comment</a>
+                        <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>content</th>
+                                    <th>voir details</th>
+                                    <th>action</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for comment in comments %}
+                                <tr>
+                                    
+                                    <td>{{ comment.id }}</td>
+                                    <td>{{ comment.content }}</td>
+                                    
+                                    
+                                    <td>
+                                        <form method="comment" action="{{ path('voir_comments', {'id': comment.id}) }}" >
+                                            <div style="margin-left: auto; margin-right: auto;">
+                                            <a class="text-warning" href="{{ path('voir_comments', {'id': comment.id}) }}"><i class="mdi mdi-eye"></i></a>
+                                            <a href="{{ path('modifier_comments', {'id': comment.id}) }}"><i class="mdi mdi-tooltip-edit"></i></a>
+                                            <button class="btn btn-outline-danger" style="font-size: 14px;background:none; border:none;margin:0;padding:0;cursor: pointer;text-decoration: underline red;" class="btn" type="submit">Voir</button>
+                                            </form>
+                                    </td>
+                                     <td>
+                                        <form method="comment" action="{{ path('supprimer_comments', {'id': comment.id}) }}" onsubmit="return confirm('vous etes sure de vouloir supprimer ?');">
+                                            <div style="margin-left: auto; margin-right: auto;">
+                                            <a class="text-warning" href="{{ path('voir_comments', {'id': comment.id}) }}"><i class="mdi mdi-eye"></i></a>
+                                            <a href="{{ path('modifier_comments', {'id': comment.id}) }}"><i class="mdi mdi-tooltip-edit"></i></a>
+                                            <button class="btn btn-outline-danger" style="font-size: 14px;background:none; border:none;margin:0;padding:0;cursor: pointer;text-decoration: underline red;" class="btn btn-outline-danger" type="submit">supprimer</button>
+                                            </form>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="3">Aucun comment trouvée</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+{% endblock %} #}
+{% extends 'base-back.html.twig' %}
+{% block body %}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">la Listes des Commentaires</h3>
+                        <a class="text-warning" href="{{ path('ajout_comments') }}">
+                            <i class="mdi mdi-database-plus">
+                            </i> Nouveau Commentaire</a>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+
+                                    <th>Id</th>
+                                    <th>content</th>
+
+                                    <th>action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for comment in comments %}
+                                <tr>
+                                    <td>{{ comment.id }}</td>
+                                    <td>{{ comment.content |raw }}</td>
+
+
+
+                                    <td style="text-align: center;">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-info">Actions</button>
+                                            <button type="button" class="btn btn-info dropdown-toggle dropdown-icon"
+                                                data-toggle="dropdown">
+                                            </button>
+                                            <div class="dropdown-menu" role="menu">
+                                                <a href="{{ path('voir_comments', {'id': comment.id}) }}">Voir </a>
+                                                <a class="dropdown-item" role="menu"
+                                                    href="{{ path('modifier_comments', {'id': comment.id}) }}">Modifier</a>
+                                            </div>
+                                    </td>
+                                </tr>
+
+                                {% else %}
+                                <tr>
+                                    <td>Aucun comment trouvée</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>content</th>
+
+                                    <th>action</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Reclamation{% endblock %}
+{% block body %}
+<br><br><br><br><br><br><br>
+<style type="text/css">
+        {
+            font-family: Candara, Arial, sans-serif;
+        }
+     
+        h1{
+            font-family: monospace;
+            color:blue;
+            position: initial;
+         }
+        
+    </style>
+    <h1>Reclamation</h1>
+
+    <table class="table">
+        <tbody>
+         
+            <tr>
+                <th>Sujet</th>
+                <td>{{ reclamation.sujet }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ reclamation.description }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ reclamation.date ? reclamation.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+     <a href="{{ path('reclamation_index') }}"><button class="btn btn-primary ">back to list</button></a>
+ <a href="{{ path('reclamation_edit', {'id': reclamation.id}) }}"><button class="btn btn-primary ">edit</button></a>
+    {{ include('reclamation/_delete_form.html.twig') }}
+
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/62278e6ea34c2456412a13a1/1ftl88p3e';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+
+{% endblock %}

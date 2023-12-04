@@ -1,0 +1,92 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Gestion Des Evenements{% endblock %}
+
+{% block body %}
+    <h1>Gestion Des Evenements</h1>
+    <br> <br>
+  <a href="{{ path('evenement_pdf') }}"> PDF</a>
+  <br> <br>
+  <div class="pcoded-search-box" style="position: relative; ">
+        <input onkeyup="searchEnt()" type="text" id="searchEnt" class="form-control" placeholder="Search">
+    </div>
+    <br> 
+     <a class="btn btn-success" href="{{path('DESCr') }}">Décroissant</a>
+<a class="btn btn-success"href="{{path('ASCr') }}">Croissant</a>
+     <br> <br>           
+    <table class="table">
+    
+        <thead>
+          <tr >
+                <th>Id</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Lieu</th>
+                <th>Description</th>
+                <th>Picture</th>
+             
+            </tr>
+        </thead>
+        <tbody>
+
+
+
+
+
+
+
+
+        {% for event in events %}
+            <tr name="elements" id="{{'event'~ event.id}}">
+                <td>{{ event.id }}</td>
+                <td>{{ event.Name }}</td>
+                <td>{{ event.date ? event.date|date('Y-m-d') : '' }}</td>
+                <td>{{ event.lieu }}</td>
+                <td>{{ event.description }}</td>
+               <td ><img src="{{ asset('Uploads/image/' ~event.picture) }}" style="width: 60px" style="height:60px"></td>
+                <td>
+                    <a href="{{ path('event_show', {'id': event.id}) }}">show</a>
+                    <a href="{{ path('event_edit', {'id': event.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        
+    </table>
+    <script >
+
+function searchEnt() {
+    let searchString = document.getElementById('searchEnt').value; // recuperation de l'input de la recherche
+    const elements = document.getElementsByName('elements') //recuperation de la reference du dom (liste des tr)
+    if (searchString.length!==0){
+        $.ajax({
+            url: '/event/search1/'+searchString,
+            success: function (data) {
+                console.log("data :",data)
+                for (let i = 0; i < elements.length; i++){
+                    elements[i].style.display = "none";
+                }
+                for (let j = 0; j < data.length; j++) {
+                    $('#event'+data[j].id).show('slow');
+                }
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert("erreur lors de la recuperation des données")
+            }
+        });
+    }else{
+        for (let i = 0; i < elements.length; i++){
+            elements[i].style.display = "revert";
+        }
+    }
+}
+</script>
+    <a href="{{ path('event_new') }}">Create new</a>
+    <br>
+    
+ 
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Reclamation index{% endblock %}
+
+{% block body %}
+<br><br><br><br><br>
+    <div class="clients">
+        <div class="client-head">
+        <br><br><br><br>
+
+
+        
+
+
+<style type="text/css">
+        {
+            font-family: Candara, Arial, sans-serif;
+        }
+     
+        h1{
+            font-family: monospace;
+            color:blue;
+            position: initial;
+         }
+        
+    </style>
+         }
+
+
+
+
+
+
+
+            
+            <h1>what customer say about us !</h1>
+       <section class="vs-events-wrapper events-layout1 space-top space-md-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+           {% for reclamation in reclamations %}
+                
+                    <div
+                            class="vs-events d-lg-flex"
+                            data-bg-src="{{asset('Front/img/shape/events-bg-1.png')}}"
+                    >
+                      
+                        <div class="media-body align-self-center">
+                            <h3 class="events-name h5 text-dark">
+                                <a href="tournament-details.html">{{ reclamation.sujet }}</a>
+                            </h3>
+                            <ul class="events-list list-style-none">
+                                {% if reclamation.reponse is not null %}<p>reponse: {{ reclamation.reponse.reponse }}  date reponse : {{ reclamation.reponse.date ? reclamation.date|date('Y-m-d H:i:s') : '' }}<p>{% else %} <h4> pas de reponse </h4> {% endif %}
+                    <label> {{ reclamation.date ? reclamation.date|date('Y-m-d H:i:s') : '' }}</label>
+
+
+                                <li class="text-dark">
+                                    <span class="text-dark">Description:</span>{{ reclamation.description }}
+                                </li>
+                                <div>
+                            <a href="{{ path('reclamation_show', {'id': reclamation.id}) }}"><button class="btn btn-primary">show</button></a>
+                            <a href="{{ path('reclamation_edit', {'id': reclamation.id}) }}"><button class="btn btn-primary ">edit</button></a>
+                        </div>
+                            </ul>
+                        </div>
+                    </div>
+               
+                {% endfor %}
+
+                </div>
+
+
+                </div>
+            
+        </div>
+    </section>
+
+    <a href="{{ path('reclamation_new') }}"><button class="btn ">Create new</button></a>
+{% endblock %}

@@ -1,0 +1,17 @@
+{{ form_start(recform,{'attr': {'novalidate': 'novalidate'}} ) }}
+<div class="contact-form">
+
+    <div class="contact-to">
+        {{ form_widget(recform.sujet,{'attr': {'class': 'string' , 'placeholder' : 'Sujet'}}) }}
+    </div>
+    <br>
+    <div class="text2">
+        {{ form_widget(recform.description,{'attr': {'class': 'text' , 'placeholder' : 'Subject'}}) }}
+    </div>
+     
+    <span>    <button class="btn btn-primary">{{ button_label|default('Send Your Claim') }}</button></span>
+</div>
+
+{{ form_end(recform) }}
+
+

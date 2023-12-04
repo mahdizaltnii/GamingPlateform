@@ -1,0 +1,20 @@
+
+{{ form_start(annonceform, {attr: {class: 'filter' }}) }}
+    {{ form_row(annonceform.q) }}
+
+    <h4 style="color: black;">Catégorie</h4>
+    {{ form_row(annonceform.categorie) }}
+
+    <h4 style="color: black;">Prix</h4>
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(annonceform.min) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(annonceform.max) }}
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100" style="margin-bottom: 10px;">Filtrer</button>
+    <button type="submit" class="btn btn-primary w-100"><a href="{{ path('ajoutAnnonce') }}">Ajouter un Annonce</a></button>
+{{ form_end(annonceform) }}

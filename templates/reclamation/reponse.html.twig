@@ -1,0 +1,25 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}New Reclamation{% endblock %}
+
+{% block body %}
+    <h1>Create new Reclamation</h1>
+
+    {{ form_start(recform,{'attr': {'novalidate': 'novalidate'}} ) }}
+    {{ form_widget(recform) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(recform) }}
+
+
+    <a href="{{ path('reclamation_index2') }}">back to list</a>
+
+
+
+
+
+
+
+
+
+    
+{% endblock %}

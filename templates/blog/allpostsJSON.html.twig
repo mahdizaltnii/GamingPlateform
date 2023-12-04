@@ -1,0 +1,9 @@
+{% extends 'base-front.html.twig' % }
+
+{% block body %}
+
+<h1> liste des posts JSON</h1>
+
+{{ data|json_encode()}}
+
+{% endblock %}

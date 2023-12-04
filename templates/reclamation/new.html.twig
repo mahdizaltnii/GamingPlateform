@@ -1,0 +1,45 @@
+
+
+
+{% extends 'base-front.html.twig' %}
+
+{% block title %}
+
+
+
+
+
+{% endblock %}
+
+
+
+{% block body %}
+
+
+<center>
+<div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+  <div class="card-header">Create new claim</div>
+ <br><br><br><br><br><br>
+<br><br><br>
+
+</div>
+
+
+<br><br>
+
+
+
+
+
+
+    {{ form_start(recform,{'attr': {'novalidate': 'novalidate'}} ) }}
+    {{ form_widget(recform) }}
+     {{ include('reclamation/_form.html.twig') }}
+    {{ form_end(recform) }}
+    <a href="{{ path('reclamation_index') }}">back to list</a>
+    
+<br><br><br><br><br><br><br><br>
+</center>
+{% endblock %}
+
+

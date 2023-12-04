@@ -1,0 +1,140 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Produit index{% endblock %}
+
+{% block body %}
+    <h1>Produit index</h1>
+    <br>   <br>   <br>   <br>   <br>
+    <input type="text"  name="search" class="form-control js-user-search" placeholder="Rechercher">
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>QteProd</th>
+            <th>PrixProd</th>
+            <th>Image</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody id="entitiesNavv">
+        {% for produit in produits %}
+            <tr>
+                <td>{{ produit.id }}</td>
+                <td>{{ produit.Nom }}</td>
+                <td>{{ produit.Description }}</td>
+                <td>{{ produit.QteProd }}</td>
+                <td>{{ produit.PrixProd }}</td>
+                <td><img src="{{ asset('image/'~produit.image) }}"> </td>
+
+                <td>
+                    <a href="{{ path('app_produit_show_front', {'id': produit.id}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <script src="{{ asset('assets/js/jquery.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            var searchRequest = null;
+            $(".js-user-search").keyup(function () {
+                var that = this;
+                var value = $(this).val();
+                var entitySelector = $("#entitiesNavv").html('');
+                //   console.log(value.length)
+
+                if (searchRequest != null)
+                    searchRequest.abort();
+                searchRequest = $.ajax({
+                    type: "GET",
+                    url: "{{ path('search_ajax') }}",
+                    data: {
+                        'q': value
+                    },
+                    dataType: "text",
+                    success: function (msg) {
+                        //we need to check if the value is the same
+                        console.log("here")
+
+                        var result = JSON.parse(msg);
+
+                        $.each(result, function (key, arr) {
+                            $.each(arr, function (id, value) {
+                                if (key == 'entities') {
+                                    if (id != 'error') {
+
+
+                                        var id=value[0];
+                                        var nom=value[1];
+
+                                        var description=value[2]
+                                        var qte=value[3];
+                                        var prix=value[4];
+                                        var photo=value[5];
+
+                                        entitySelector.append(
+                                            +'<tr>'
+                                            +'<td>'
+                                            +id
+                                            +'</td>'
+                                            +'<td>'
+                                            +nom
+                                            +  '</td>'
+                                            +  '<td>'
+                                            +description
+                                            + '</td>'
+                                            + '<td>'
+                                            +qte
+                                            + '</td>'
+                                            +'<td>'
+                                            +prix
+                                            +  '</td>'
+
+                                            +   '<td>'
+                                            +photo
+                                            + '</td>'
+                                            +'<td>'
+                                            +'<a href="/produit/'+id+'">'
+                                            + 'show</a>'
+
+                                            +'<td>'
+                                            +'<a href="/produit/'+id+'/edit">'
+                                            + 'Edit</a>'
+
+
+                                            +'</td>'
+
+                                        );
+                                        console.log(value)
+                                        // document.getElementById("myImgTag"+idExposee).src= assetsDir + '/' + photo.name;
+                                        // document.getElementById("mypath"+idExposee).href= afficheEX +'/'+idExposee;
+
+
+
+
+
+                                    } else {
+                                        entitySelector.append('<li class="errorLi">' + value + '</li>');
+                                    }
+                                }
+                            });
+                        });
+
+
+                    }
+
+                });
+
+            });
+        });
+    </script>
+{% endblock %}

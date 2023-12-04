@@ -1,0 +1,35 @@
+{% extends 'base-back.html.twig' %}
+
+
+
+
+
+{% block body %}
+<br><br><br><br><br><br>
+<br><br><br>
+
+<center>
+<div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+  <div class="card-header">Create new Category</div>
+ 
+</div>
+
+
+<br><br>
+
+
+
+
+
+
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+    {{ form_widget(form) }}
+     {{ include('categorie/_form.html.twig') }}
+    {{ form_end(form) }}
+
+
+    <a href="{{ path('categorie_index') }}">back to list</a>
+
+
+</center>
+{% endblock %}

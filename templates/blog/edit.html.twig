@@ -1,0 +1,18 @@
+
+{% extends 'base-front.html.twig' %}
+
+{% form_theme postform 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+
+    <section class="vs-match-wrapper vs-match-layout1 newsletter-pb" style="padding-bottom: 280px; position: relative;top: 50px;">
+    <div class="container" style="position:relative; max-height:100%;top: 200px;">
+    <h1>Edit Posts</h1>
+
+    {{ include('blog/_form.html.twig') }}
+
+    <button class="btn btn-primary"><a href="{{ path('posts_index') }}">back to list</a></button>
+
+    <button class="btn btn-danger"><a href="{{ path('posts_delete',{'id':post.id}) }}">delete</a></button>
+    </div>
+    </section>
+{% endblock %}

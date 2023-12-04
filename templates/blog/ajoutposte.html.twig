@@ -1,0 +1,17 @@
+
+{% extends 'base-front.html.twig' %}
+{% block body %}
+   <section class="vs-match-wrapper vs-match-layout1 newsletter-pb" style="padding-bottom: 280px; position: relative;top: 50px;">
+    <div class="container" style="position:relative; max-height:100%;top: 200px;">
+       
+        {% form_theme postform 'bootstrap_4_layout.html.twig' %}
+        {{ form_start(postform,{'attr':{'novalidate':'novalidate'}}) }}
+
+        {{ form_widget(postform) }}
+
+        {{ form_end(postform) }}
+    </div>
+    </section>
+
+    
+{% endblock %}

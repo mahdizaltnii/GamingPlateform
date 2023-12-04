@@ -1,0 +1,71 @@
+{% extends 'base-back.html.twig' %}
+{% block body %}
+<section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">DataTable with default features</h3>
+                    
+                </div>
+                        <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>picture</th>
+                            <th>Users</th>
+                            <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for team in teams %}
+                            <tr>
+                            <td>{{team.TeamName}}</td>
+                            <td>{{team.Description}}</td>
+                            <td>{{team.Picture}}</td>
+                            <td style="text-align: center;">
+                                <div class="btn-group">
+                                        <button type="button" class="btn btn-info">Users</button>
+                                        <button type="button" class="btn btn-info dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                        {# <span class="sr-only">Toggle Dropdown</span> #}
+                                        </button>
+                                        <div class="dropdown-menu" role="menu">
+                                        <a class="dropdown-item">User 1</a>
+                                        <a class="dropdown-item">User 2</a>
+                                    </div>
+                            </td>
+                            <td style="text-align: center;">
+                                <div class="btn-group">
+                                        <button type="button" class="btn btn-info">Actions</button>
+                                        <button type="button" class="btn btn-info dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                        {# <span class="sr-only">Toggle Dropdown</span> #}
+                                        </button>
+                                        <div class="dropdown-menu" role="menu">
+                                        <a class="dropdown-item" href="{{path('team-edit',{'id':team.id})}}">Modify</a>
+                                        <a class="dropdown-item" href="{{path('deleteTeam',{'id':team.id})}}">Delete</a>
+                                    </div>
+                            </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Creation Date</th>
+                                <th>Users</th>
+                                <th>Actions</th>
+                            </tr>
+                            </tfoot>
+                    </table>
+                </div>
+            </div> 
+        </div> 
+        </div> 
+        </div> 
+</section>         
+{% endblock %}

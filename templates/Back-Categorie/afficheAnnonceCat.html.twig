@@ -1,0 +1,21 @@
+{% extends 'base-back.html.twig' %}
+{% block body %}
+    <h1>List Annonces</h1>
+
+    <button class="btn btn-primary" style="border-radius: 1%; margin-left: 20px;"><a href="{{ path('addAnnonceCat') }}" style="color:white;">Add new Category</a></button>
+    <br><br>
+    <table border="1" class="table">
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        <tr {% for a in annonceCat %}>
+            <td>{{ a.id }}</td>
+            <td>{{ a.nom }}</td>
+            <td><a href="{{ path('delete_annonceCatB',{'id':a.id}) }}">Delete</a></td>
+            <td><a href="{{ path('editB_annonceCat',{'id':a.id}) }}">Update</a></td>
+        </tr {% endfor %}>
+    </table>
+{% endblock %}
